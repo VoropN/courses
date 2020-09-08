@@ -1,0 +1,49 @@
+@import "src/app/shared/styles/variables.scss";
+
+.header {
+  background-color: #414452;
+  color: $header-color;
+  padding: 10px;
+}
+
+.logo {
+  text-transform: uppercase;
+  &__text {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    line-height: 3;
+  }
+
+  &__image {
+    color: $color-icon-play;
+    margin-bottom: 2px;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: $max-width;
+  margin: auto;
+
+  &-grid {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $header-background-color;
+
+    &__item {
+      color: $header-color;
+
+      &:hover,
+      &--active {
+        text-decoration: underline;
+      }
+
+       &--active {
+         background-color: $header-background-active;
+       }
+    }
+  }
+}

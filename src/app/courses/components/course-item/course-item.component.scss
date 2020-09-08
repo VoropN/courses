@@ -1,0 +1,32 @@
+
+.card {
+  padding-right: 230px;
+
+  &__buttons {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-header {
+    & .mat-card-title {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+    &__content {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-basis: 250px;
+      padding: 0;
+    }
+
+    &__date {
+      padding-left: 25px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

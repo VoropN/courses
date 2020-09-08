@@ -1,0 +1,55 @@
+<div class="search-container">
+  <form>
+    <mat-form-field class="search-field">
+      <input
+        (keydown.enter)="onSearch()"
+        class="search-field__input"
+        type="text"
+        [placeholder]="options.placeholder"
+        aria-label="number"
+        matInput
+        [formControl]="searchControl"
+        [matAutocomplete]="auto"
+      />
+      <button
+        mat-button
+        class="search-field__button search-field__clear"
+        *ngIf="searchControl.value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        type="button"
+        (click)="clearValue()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <button
+        mat-button
+        matSuffix
+        mat-icon-button
+        (click)="onSearch()"
+        type="button"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          (click)="onSearch()"
+          *ngFor="let item of items; trackBy: trackByItems"
+          [value]="item[options.name]"
+        >
+          <img
+            *ngIf="item[options.img]"
+            class="search-icon"
+            mat-card-image
+            [src]="item[options.img]"
+            alt="book"
+            height="25"
+          />
+          {{ item[options.name] }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>

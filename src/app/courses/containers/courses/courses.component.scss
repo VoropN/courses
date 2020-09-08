@@ -1,0 +1,26 @@
+.courses {
+  margin: auto;
+  padding: 25px;
+  max-width: 1050px;
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-list {
+    &__item {
+      margin: 10px 0;
+    }
+
+    &__buttons {
+      margin-top: 10px;
+      padding: 0;
+    }
+
+    &__button {
+      text-transform: uppercase;
+      width: 100%;
+    }
+  }
+}

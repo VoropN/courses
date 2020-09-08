@@ -1,0 +1,27 @@
+.add-course {
+  margin: auto;
+  padding: 25px;
+  max-width: 750px;
+
+  &__buttons {
+    position: absolute;
+    right: 20px;
+  }
+
+  &__card {
+    padding-bottom: 65px;
+  }
+
+  &__date {
+    width: 240px;
+  }
+
+  &__duration {
+    width: 240px;
+  }
+}
+
+mat-form-field {
+  display: block;
+  padding-top: 10px;
+}

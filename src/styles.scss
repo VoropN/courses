@@ -1,1 +1,108 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$courses-primary: mat-palette($mat-indigo);
+$courses-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$courses-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$courses-theme: mat-light-theme($courses-primary, $courses-accent, $courses-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($courses-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  background-color: #f1f2f6;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.card-header {
+  .mat-card-header-text {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+$reset-btn-bgc: #e7902c;
+$save-btn-bgc: #777;
+$del-btn-bgc: #e7322c;
+$text-message: #888;
+$text-message-error: #fff;
+$background-btn: #424242;
+$text-btn: greenyellow;
+
+.notify {
+  height: max-content;
+  color: $text-message;
+  max-width: 200px;
+  font-weight: 500;
+
+  & .mat-button {
+    color: $text-btn;
+    background: $background-btn;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  }
+
+  &-error {
+    background-color: $del-btn-bgc;
+    color: $text-message-error;
+  }
+
+  &-warning {
+    background-color: $reset-btn-bgc;
+  }
+
+  &-success {
+    background-color: $save-btn-bgc;
+    color: $text-btn;
+  }
+}
+
+
+.new-item {
+  border: 3px solid #fff700;
+
+  &::after {
+    content: "new_releases";
+    content: "fiber_new";
+    font-family: 'Material Icons';
+    font-size: 35px;
+    position: absolute;
+    top: -9px;
+    right: -8px;
+    padding: .5px 0 0 .5px;
+    color: rgb(255, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    background-color: #fff;
+    height: 30px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+}

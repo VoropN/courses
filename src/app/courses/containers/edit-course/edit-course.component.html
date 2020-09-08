@@ -1,0 +1,6 @@
+<app-course-edit-form
+  *ngIf="course$ | async as course"
+  [course]="course"
+  [title]="title"
+  (saveCourse)="updateCourse($event)"
+></app-course-edit-form>

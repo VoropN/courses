@@ -1,0 +1,43 @@
+<div class="courses">
+  <app-search
+    [searchParams]="searchParams.value"
+    [items]="coursesName$ | async"
+    [options]="searchOpitions"
+    (search)="onSearch($event)"
+    (searchName)="onSearchName($event)"
+  ></app-search>
+
+  <div class="courses__buttons">
+    <a mat-raised-button color="primary" [routerLink]="['add']">
+      <mat-icon>add</mat-icon>
+      Add course
+    </a>
+  </div>
+
+  <ul class="courses-list" *ngIf="(courses$ | async) as courses">
+    <li
+      class="courses-list__item"
+      *ngFor="let course of courses; trackBy: trackByCourses"
+    >
+      <app-course-item
+        [item]="course"
+        (toEdit)="onEdit($event)"
+        (toDelete)="onDelete($event)"
+      >
+      </app-course-item>
+    </li>
+    <li>
+      <mat-card *ngIf="tryToShowButtonMore(courses)" class="courses-list__buttons">
+        <button
+          mat-button
+          class="courses-list__button"
+          type="button"
+          color="primary"
+          (click)="showMoreCourses()"
+        >
+          Load More
+        </button>
+      </mat-card>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,19 @@
+@import "src/app/shared/styles/variables.scss";
+
+.footer {
+  background-color: $footer-background-color;
+  color: $footer-color;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 25px;
+  height: 50px;
+  margin-top: -50px;
+
+  &__copyright {
+    width: 100%;
+    text-align: end;
+    max-width: $max-width;
+    margin: auto;
+  }
+}
