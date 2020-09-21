@@ -42,16 +42,4 @@ describe('ErrorHandlerService', () => {
       expect(messageService.showNotification).toHaveBeenCalled();
     });
   });
-
-  describe('handleResponceError()', async () => {
-    const error = new HttpErrorResponse({ error: 'any' });
-    const userErrorMessage = 'Something went wrong';
-
-    it('should throw error when it calls', () => {
-      service.handleResponceError(error, userErrorMessage).subscribe(
-        data => fail(data),
-        errorHTTP => expect(errorHTTP).toBe(error)
-      )
-    });
-  });
 });

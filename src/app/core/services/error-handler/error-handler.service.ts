@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { MessageService } from '../message/message.service';
 
 @Injectable({
@@ -15,6 +15,6 @@ export class ErrorHandlerService {
 
   public handleResponceError(error: HttpErrorResponse, userErrorMessage: string): Observable<never> {
     this.showErrorNotification(userErrorMessage);
-    return throwError(error);
+    return EMPTY;
   }
 }

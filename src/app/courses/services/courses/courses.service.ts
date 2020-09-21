@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CoursesApiService } from 'src/app/core/services/courses-api/courses-api.service';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject, EMPTY, of } from 'rxjs';
 import { Course } from '../../../core/models';
 import { SearchParams } from 'src/app/core/models';
 import { tap, retry, catchError, finalize, take } from 'rxjs/operators';
@@ -48,7 +48,7 @@ export class CoursesService {
         this.coursesSubject.next(courses);
       }),
       retry(2),
-      catchError((error) => this.errorHandler.handleResponceError(error, 'Can\'t load courses! Try again later.')),
+      catchError((error) => (this.errorHandler.handleResponceError(error, 'Can\'t load courses! Try again later.'), EMPTY)),
     ).subscribe();
   }
 
@@ -56,7 +56,7 @@ export class CoursesService {
     this.coursesApiService.getCourses(params).pipe(
       tap((courses) => this.coursesNameSubject.next(courses)),
       retry(2),
-      catchError((error) => this.errorHandler.handleResponceError(error, 'Can\'t load courses! Try again later.')),
+      catchError((error) => (this.errorHandler.handleResponceError(error, 'Can\'t load courses! Try again later.'), EMPTY)),
     ).subscribe();
   }
 
@@ -65,7 +65,8 @@ export class CoursesService {
       retry(2),
       catchError((error) => {
         this.redirectToCoursesPage();
-        return this.errorHandler.handleResponceError(error, `Can\'t load course by id ${id}!`);
+        this.errorHandler.handleResponceError(error, `Can\'t load course by id ${id}!`);
+        return EMPTY;
       }),
     );
   }
@@ -78,9 +79,7 @@ export class CoursesService {
         this.messageService.showNotification(message, 'success', 'Ok');
       }),
       retry(2),
-      catchError((error) => {
-        return this.errorHandler.handleResponceError(error, `Can\'t delete course "${course.name}"!`);
-      }),
+      catchError((error) => (this.errorHandler.handleResponceError(error, `Can\'t delete course "${course.name}"!`), EMPTY)),
       finalize(() => {
         this.courses$.pipe(take(1)).subscribe(() => this.updateDeletedState(course, deletedStateOperation.delete));
         const end = this.searchParamsSubject.value._end === this.initSearchParams._end ?
@@ -99,9 +98,7 @@ export class CoursesService {
         this.messageService.showNotification(message, 'success', 'Ok');
       }),
       retry(2),
-      catchError((error) => {
-        return this.errorHandler.handleResponceError(error, `Can\'t create course "${course.name}"!`);
-      }),
+      catchError((error) => (this.errorHandler.handleResponceError(error, `Can\'t create course "${course.name}"!`), EMPTY)),
       finalize(() => this.redirectToCoursesPage())
     ).subscribe();
   }
@@ -113,9 +110,7 @@ export class CoursesService {
         this.messageService.showNotification(message, 'success', 'Ok');
       }),
       retry(2),
-      catchError((error) => {
-        return this.errorHandler.handleResponceError(error, `Can\'t updated course "${course.name}"!`);
-      }),
+      catchError((error) => (this.errorHandler.handleResponceError(error, `Can\'t updated course "${course.name}"!`), EMPTY)),
       finalize(() => this.redirectToCoursesPage())
     ).subscribe();
   }
