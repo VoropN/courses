@@ -7,13 +7,14 @@ import { By } from '@angular/platform-browser';
 import { Course } from 'src/app/core/models';
 
 const mockNewCourse: Course = {
-  name: "Magna excepteur aute deserunt9",
-  description: "Est minim ea sunt laborum minim eu excepteer, Colpa sint exercitation mollit enim ad culpa allqulp laborum cillum. Dolor officia culpa labore ex eiusmod ut est ea voluptate ea nostrud.",
-  createDate: "11/14/19",
+  name: 'Magna excepteur aute deserunt9',
+  description:
+    'Est minim ea sunt laborum minim eu excepteer, Colpa sint exercitation mollit enim ad culpa allqulp laborum cillum. Dolor officia culpa labore ex eiusmod ut est ea voluptate ea nostrud.',
+  createDate: '11/14/19',
   duration: 123,
-  authors: "Authour2",
+  authors: 'Authour2',
   isDeleted: false,
-  img: 'assets/course.svg'
+  img: 'assets/course.svg',
 };
 
 describe('AddCourseComponent', () => {
@@ -31,7 +32,7 @@ describe('AddCourseComponent', () => {
           useValue: service,
         },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 
@@ -54,11 +55,11 @@ describe('AddCourseComponent', () => {
       expect(postMethod).toHaveBeenCalled();
     });
 
-    it('should call courseService\'s method when received event "saveCourse"', () => {
+    it('should call courseService\'s method when received event 'saveCourse"', () => {
       const formEl = fixture.debugElement.query(By.css('app-course-edit-form'));
-      formEl.triggerEventHandler('saveCourse', mockNewCourse);
-      fixture.detectChanges();
-      expect(service.postCourse).toHaveBeenCalledWith(mockNewCourse);
-    });
+    formEl.triggerEventHandler('saveCourse', mockNewCourse);
+    fixture.detectChanges();
+    expect(service.postCourse).toHaveBeenCalledWith(mockNewCourse);
   });
+});
 });

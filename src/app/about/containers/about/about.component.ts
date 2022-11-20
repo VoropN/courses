@@ -10,7 +10,6 @@ import { About } from 'src/app/core/models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutComponent {
-
   public about$: Observable<About> = this.aboutService.getAbout();
 
   constructor(private aboutService: AboutService) {}

@@ -2,21 +2,23 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HeaderComponent, LoadingComponent, FooterComponent } from '../../components';
+import {
+  HeaderComponent,
+  LoadingComponent,
+  FooterComponent,
+} from '../../components';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+      imports: [RouterTestingModule],
       declarations: [
         AppComponent,
         HeaderComponent,
         LoadingComponent,
-        FooterComponent
+        FooterComponent,
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 

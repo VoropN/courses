@@ -6,14 +6,17 @@ import { EditCourseComponent } from './containers/edit-course/edit-course.compon
 
 const routes: Routes = [
   {
-    path: '', component: CoursesComponent
+    path: '',
+    component: CoursesComponent,
   },
   {
-    path: 'add', component: AddCourseComponent
+    path: 'add',
+    component: AddCourseComponent,
   },
   {
-    path: 'edit/:id', component: EditCourseComponent
-  }
+    path: 'edit/:id',
+    component: EditCourseComponent,
+  },
 ];
 
 @NgModule({

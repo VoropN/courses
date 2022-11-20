@@ -9,10 +9,12 @@ describe('MessageService', () => {
   beforeEach(() => {
     serviceMatSnackBar = jasmine.createSpyObj('MatSnackBar', ['open']);
     TestBed.configureTestingModule({
-      providers: [{
-        provide: MatSnackBar,
-        useValue: serviceMatSnackBar,
-      }]
+      providers: [
+        {
+          provide: MatSnackBar,
+          useValue: serviceMatSnackBar,
+        },
+      ],
     });
   });
 
@@ -33,7 +35,7 @@ describe('MessageService', () => {
         duration: 10000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom',
-        panelClass: ['notify', `notify-${type}`]
+        panelClass: ['notify', `notify-${type}`],
       });
     });
   });

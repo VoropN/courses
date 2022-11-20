@@ -13,7 +13,7 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     aboutService = jasmine.createSpyObj('AboutService', {
-      'getAbout': of({ text: 'about text' }),
+      getAbout: of({ text: 'about text' }),
     });
     TestBed.configureTestingModule({
       declarations: [AboutComponent],
@@ -21,12 +21,11 @@ describe('AboutComponent', () => {
         {
           provide: AboutService,
           useValue: aboutService,
-          deps: [AboutApiService]
-        }
+          deps: [AboutApiService],
+        },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

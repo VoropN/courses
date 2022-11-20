@@ -9,26 +9,27 @@ import { Router } from '@angular/router';
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoursesComponent {
   public courses$: Observable<Course[]> = this.coursesService.courses$;
   public coursesName$: Observable<Course[]> = this.coursesService.coursesName$;
-  public searchParams: BehaviorSubject<SearchParams> = this.coursesService.searchParamsSubject;
+  public searchParams: BehaviorSubject<SearchParams> =
+    this.coursesService.searchParamsSubject;
   public searchOpitions: SearchOptions = {
     placeholder: 'Search Course',
   };
   public isDisabled = false;
 
-  constructor(
-    private coursesService: CoursesService,
-    private router: Router,
-  ) {
+  constructor(private coursesService: CoursesService, private router: Router) {
     this.coursesService.getCourses();
   }
 
   public onSearch(search): void {
-    this.coursesService.getCourses({ ...this.searchParams.value, name_like: search });
+    this.coursesService.getCourses({
+      ...this.searchParams.value,
+      name_like: search,
+    });
   }
 
   public onSearchName(search): void {

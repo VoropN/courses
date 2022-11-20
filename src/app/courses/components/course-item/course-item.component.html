@@ -1,28 +1,41 @@
 <mat-card class="card" [appNewDateDetector]="item.createDate">
   <mat-card-header class="card-header">
     <mat-card-title>
-      {{item.name}}
+      {{ item.name }}
     </mat-card-title>
-      <mat-card-subtitle class="card-header__content">
-        <mat-icon>alarm</mat-icon>
-        {{item.duration | time}}
-        <span class="card-header__date">
-          <mat-icon>date_range</mat-icon>
-          {{item.createDate | date}}
-        </span>
-      </mat-card-subtitle>
+    <mat-card-subtitle class="card-header__content">
+      <mat-icon>alarm</mat-icon>
+      {{ item.duration | time }}
+      <span class="card-header__date">
+        <mat-icon>date_range</mat-icon>
+        {{ item.createDate | date }}
+      </span>
+    </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p>
-      {{item.description}}
+      {{ item.description }}
     </p>
   </mat-card-content>
   <mat-card-actions class="card__buttons">
-    <button class="course-item__edit" mat-raised-button color="primary" [disabled]="item.isDeleted" (click)="onEdit()" >
+    <button
+      class="course-item__edit"
+      mat-raised-button
+      color="primary"
+      [disabled]="item.isDeleted"
+      (click)="onEdit()"
+    >
       <mat-icon>edit</mat-icon>
       Edit
     </button>
-    <button class="course-item__delete" mat-raised-button color="primary" [disabled]="item.isDeleted" (click)="onDelete()" type="button">
+    <button
+      class="course-item__delete"
+      mat-raised-button
+      color="primary"
+      [disabled]="item.isDeleted"
+      (click)="onDelete()"
+      type="button"
+    >
       <mat-icon>delete</mat-icon>
       Delete
     </button>

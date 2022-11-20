@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoursesComponent, EditCourseComponent, AddCourseComponent } from './containers';
+import {
+  CoursesComponent,
+  EditCourseComponent,
+  AddCourseComponent,
+} from './containers';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CourseItemComponent, CourseEditFormComponent } from './components';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +38,7 @@ import { CourseItemComponent, CourseEditFormComponent } from './components';
     SharedModule,
     SearchModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
 })
-export class CoursesModule { }
+export class CoursesModule {}

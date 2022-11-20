@@ -4,7 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './containers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent, LoadingComponent, FooterComponent } from './components';
+import {
+  HeaderComponent,
+  LoadingComponent,
+  FooterComponent,
+} from './components';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,6 +32,6 @@ import { httpInterceptorProviders } from '../core/interseptors';
     MatSnackBarModule,
   ],
   providers: [httpInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

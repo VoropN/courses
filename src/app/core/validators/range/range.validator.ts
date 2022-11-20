@@ -5,11 +5,14 @@ import { Range } from './range.model';
 export const rangeValidator = (range: Range): ValidatorFn => {
   return (control: AbstractControl): RangeError => {
     let result = null;
-    if (control.value !== undefined &&
-      (isNaN(control.value) || control.value < range.min || control.value > range.max)) {
+    if (
+      control.value !== undefined &&
+      (isNaN(control.value) ||
+        control.value < range.min ||
+        control.value > range.max)
+    ) {
       result = { range: true };
     }
     return result;
   };
 };
-

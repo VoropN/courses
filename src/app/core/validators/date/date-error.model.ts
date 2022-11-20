@@ -1,1 +1,1 @@
-export type DateError = { date: boolean; } | null;
+export type DateError = { date: boolean } | null;

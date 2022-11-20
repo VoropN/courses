@@ -1,1 +1,1 @@
-export type RangeError = { range: boolean; } | null;
+export type RangeError = { range: boolean } | null;

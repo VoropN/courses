@@ -4,5 +4,5 @@ import { LoadingInterseptor } from './loading.interseptor';
 
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: ApiInterseptor, multi: true },
-  { provide: HTTP_INTERCEPTORS, useClass: LoadingInterseptor, multi: true }
+  { provide: HTTP_INTERCEPTORS, useClass: LoadingInterseptor, multi: true },
 ];

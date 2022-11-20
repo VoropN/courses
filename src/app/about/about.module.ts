@@ -5,9 +5,6 @@ import { AboutComponent } from './containers';
 
 @NgModule({
   declarations: [AboutComponent],
-  imports: [
-    CommonModule,
-    AboutRoutingModule,
-  ],
+  imports: [CommonModule, AboutRoutingModule],
 })
-export class AboutModule { }
+export class AboutModule {}

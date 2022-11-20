@@ -6,15 +6,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { By } from '@angular/platform-browser';
 
 const mockCourse = {
-  name: "Magna excepteur aute deserunt9",
-  description:
-    "Est minim ea sunt",
-  createDate: "11/14/19",
+  name: 'Magna excepteur aute deserunt9',
+  description: 'Est minim ea sunt',
+  createDate: '11/14/19',
   duration: 123,
-  authors: "Authour2",
+  authors: 'Authour2',
   isDeleted: false,
   img: 'assets/course.svg',
-  id: 9
+  id: 9,
 };
 
 describe('CourseComponent', () => {
@@ -25,9 +24,8 @@ describe('CourseComponent', () => {
     TestBed.configureTestingModule({
       imports: [SharedModule],
       declarations: [CourseItemComponent],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -47,7 +45,9 @@ describe('CourseComponent', () => {
         expect(course).toEqual(mockCourse);
         done();
       });
-      const saveButton = fixture.debugElement.query(By.css('.course-item__delete'));
+      const saveButton = fixture.debugElement.query(
+        By.css('.course-item__delete')
+      );
       saveButton.triggerEventHandler('click', null);
     });
   });
@@ -58,7 +58,9 @@ describe('CourseComponent', () => {
         expect(course).toEqual(mockCourse);
         done();
       });
-      const saveButton = fixture.debugElement.query(By.css('.course-item__edit'));
+      const saveButton = fixture.debugElement.query(
+        By.css('.course-item__edit')
+      );
       saveButton.triggerEventHandler('click', null);
     });
   });

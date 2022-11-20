@@ -8,7 +8,13 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, BehaviorSubject } from 'rxjs';
 
-const mockCoursesServiceMethods = ['getCourses', 'getCourseById', 'deleteCourse', 'postCourse', 'updateCourse'].reduce((acc, curr) => ({ ...acc, [curr]: of([]) }), {});
+const mockCoursesServiceMethods = [
+  'getCourses',
+  'getCourseById',
+  'deleteCourse',
+  'postCourse',
+  'updateCourse',
+].reduce((acc, curr) => ({ ...acc, [curr]: of([]) }), {});
 
 describe('CoursesService', () => {
   let service: CoursesService;
@@ -16,8 +22,13 @@ describe('CoursesService', () => {
   let coursesApiService: CoursesApiService;
 
   beforeEach(() => {
-    messageService = jasmine.createSpyObj('MessageService', ['showNotification']);
-    coursesApiService = jasmine.createSpyObj('CoursesApiService', mockCoursesServiceMethods);
+    messageService = jasmine.createSpyObj('MessageService', [
+      'showNotification',
+    ]);
+    coursesApiService = jasmine.createSpyObj(
+      'CoursesApiService',
+      mockCoursesServiceMethods
+    );
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [
@@ -28,16 +39,18 @@ describe('CoursesService', () => {
         },
         {
           provide: CoursesApiService,
-          useValue: coursesApiService
+          useValue: coursesApiService,
         },
         {
           provide: Router,
-          useClass: class { navigate = jasmine.createSpy("navigate"); }
-        }
-      ]
+          useClass: class {
+            navigate = jasmine.createSpy('navigate');
+          },
+        },
+      ],
     });
     service = TestBed.get(CoursesService);
-    service.searchParamsSubject = new BehaviorSubject({ _start: 0, _end: 3 })
+    service.searchParamsSubject = new BehaviorSubject({ _start: 0, _end: 3 });
   });
 
   it('should be created', () => {

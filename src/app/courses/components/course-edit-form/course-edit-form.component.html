@@ -2,43 +2,87 @@
   <mat-card class="add-course__card">
     <mat-card-header class="add-course__card-header">
       <mat-card-title>
-        {{title}}
+        {{ title }}
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field class="add-course__name">
         <mat-hint>*required</mat-hint>
         <input matInput placeholder="Title..." formControlName="name" />
-        <mat-hint align="end">{{profileForm.get('name').value.length}} / {{maxLengthTitle}}</mat-hint>
-        <mat-error *ngIf="profileForm.get('name').hasError('required')">Please enter title!</mat-error>
-        <mat-error *ngIf="profileForm.get('name').hasError('maxlength')">Title should be less or equal {{maxLengthTitle}} symbols!</mat-error>
+        <mat-hint align="end"
+          >{{ profileForm.get("name").value.length }} /
+          {{ maxLengthTitle }}</mat-hint
+        >
+        <mat-error *ngIf="profileForm.get('name').hasError('required')"
+          >Please enter title!</mat-error
+        >
+        <mat-error *ngIf="profileForm.get('name').hasError('maxlength')"
+          >Title should be less or equal
+          {{ maxLengthTitle }} symbols!</mat-error
+        >
       </mat-form-field>
       <mat-form-field class="add-course__desc">
         <mat-hint>*required</mat-hint>
-        <textarea matInput rows="3" placeholder="Description..." matInput formControlName="description"></textarea>
+        <textarea
+          matInput
+          rows="3"
+          placeholder="Description..."
+          matInput
+          formControlName="description"
+        ></textarea>
         <mat-error *ngIf="profileForm.get('description').invalid"></mat-error>
-        <mat-hint align="end">{{profileForm.get('description').value.length}} / {{maxLengthDescription}}</mat-hint>
-        <mat-error *ngIf="profileForm.get('description').hasError('required')">Please enter description!</mat-error>
-        <mat-error *ngIf="profileForm.get('description').hasError('maxlength')">Description should be less or equal {{maxLengthDescription}} symbols!</mat-error>
+        <mat-hint align="end"
+          >{{ profileForm.get("description").value.length }} /
+          {{ maxLengthDescription }}</mat-hint
+        >
+        <mat-error *ngIf="profileForm.get('description').hasError('required')"
+          >Please enter description!</mat-error
+        >
+        <mat-error *ngIf="profileForm.get('description').hasError('maxlength')"
+          >Description should be less or equal
+          {{ maxLengthDescription }} symbols!</mat-error
+        >
       </mat-form-field>
       <mat-form-field class="add-course__duration">
         <mat-hint>*required</mat-hint>
-        <input matInput type="number" placeholder="Duration..." formControlName="duration" autocomplete="off"/>
-        <mat-error *ngIf="profileForm.get('duration').hasError('required')">Please enter duration!</mat-error>
-        <mat-error *ngIf="profileForm.get('duration').hasError('range')">Duration should be from {{range.min}} to {{range.max}} min!</mat-error>
+        <input
+          matInput
+          type="number"
+          placeholder="Duration..."
+          formControlName="duration"
+          autocomplete="off"
+        />
+        <mat-error *ngIf="profileForm.get('duration').hasError('required')"
+          >Please enter duration!</mat-error
+        >
+        <mat-error *ngIf="profileForm.get('duration').hasError('range')"
+          >Duration should be from {{ range.min }} to
+          {{ range.max }} min!</mat-error
+        >
       </mat-form-field>
-      <mat-form-field class="add-course__date" >
+      <mat-form-field class="add-course__date">
         <mat-hint>*required</mat-hint>
         <mat-label>Choose a date</mat-label>
-        <input matInput formControlName="createDate" type="text" autocomplete="off">
+        <input
+          matInput
+          formControlName="createDate"
+          type="text"
+          autocomplete="off"
+        />
         <mat-datepicker-toggle matSuffix></mat-datepicker-toggle>
-        <mat-error *ngIf="profileForm.get('createDate').hasError('required')">Please enter date!</mat-error>
-        <mat-error *ngIf="profileForm.get('createDate').hasError('date')">Please enter a date in the format "MM/DD/YY"!</mat-error>
-    </mat-form-field>
+        <mat-error *ngIf="profileForm.get('createDate').hasError('required')"
+          >Please enter date!</mat-error
+        >
+        <mat-error *ngIf="profileForm.get('createDate').hasError('date')"
+          >Please enter a date in the format "MM/DD/YY"!</mat-error
+        >
+      </mat-form-field>
       <mat-form-field class="add-course__authours">
         <mat-hint>*required</mat-hint>
         <input matInput placeholder="Authors..." formControlName="authors" />
-        <mat-error *ngIf="profileForm.get('authors').invalid">Please enter authors!</mat-error>
+        <mat-error *ngIf="profileForm.get('authors').invalid"
+          >Please enter authors!</mat-error
+        >
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions class="add-course__buttons">
@@ -56,7 +100,8 @@
         mat-raised-button
         color="primary"
         type="button"
-        (click)="onSave()">
+        (click)="onSave()"
+      >
         <mat-icon>save</mat-icon>
         Save
       </button>

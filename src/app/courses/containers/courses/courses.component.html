@@ -14,7 +14,7 @@
     </a>
   </div>
 
-  <ul class="courses-list" *ngIf="(courses$ | async) as courses">
+  <ul class="courses-list" *ngIf="courses$ | async as courses">
     <li
       class="courses-list__item"
       *ngFor="let course of courses; trackBy: trackByCourses"
@@ -27,7 +27,10 @@
       </app-course-item>
     </li>
     <li>
-      <mat-card *ngIf="tryToShowButtonMore(courses)" class="courses-list__buttons">
+      <mat-card
+        *ngIf="tryToShowButtonMore(courses)"
+        class="courses-list__buttons"
+      >
         <button
           mat-button
           class="courses-list__button"

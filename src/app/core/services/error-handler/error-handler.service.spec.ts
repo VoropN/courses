@@ -11,14 +11,16 @@ describe('ErrorHandlerService', () => {
   let service: ErrorHandlerService;
 
   beforeEach(() => {
-    messageService = jasmine.createSpyObj('MessageService', ['showNotification']);
+    messageService = jasmine.createSpyObj('MessageService', [
+      'showNotification',
+    ]);
     TestBed.configureTestingModule({
       providers: [
         {
           provide: MessageService,
           useValue: messageService,
-        }
-      ]
+        },
+      ],
     });
     service = TestBed.get(ErrorHandlerService);
   });

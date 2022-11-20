@@ -9,8 +9,7 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoadingComponent {
-
   public isLoading$: Observable<boolean> = this.loadingService.loading;
 
-  constructor(public loadingService: LoadingService) { }
+  constructor(public loadingService: LoadingService) {}
 }

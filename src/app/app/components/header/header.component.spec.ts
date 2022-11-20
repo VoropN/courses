@@ -1,4 +1,9 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import {
+  async,
+  ComponentFixture,
+  TestBed,
+  inject,
+} from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
 import { CommonModule } from '@angular/common';
@@ -23,11 +28,10 @@ describe('HeaderComponent', () => {
         MatButtonModule,
         MatIconModule,
         MatSnackBarModule,
-        RouterTestingModule
+        RouterTestingModule,
       ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

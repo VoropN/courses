@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  Input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Course } from 'src/app/core/models';
@@ -24,12 +30,9 @@ export class CourseEditFormComponent {
   public profileForm: FormGroup;
   public maxLengthTitle = 50;
   public maxLengthDescription = 50;
-  public range: Range = {min: 1, max: 600};
+  public range: Range = { min: 1, max: 600 };
 
-  constructor(
-    private fb: FormBuilder,
-    private location: Location,
-  ) {
+  constructor(private fb: FormBuilder, private location: Location) {
     this.createForm();
   }
 
@@ -40,17 +43,34 @@ export class CourseEditFormComponent {
   public onSave(): void {
     this.profileForm.markAllAsTouched();
     if (this.profileForm.valid) {
-      this.saveCourse.emit({ ...this.profileForm.value, isDeleted: false, img: 'assets/course.svg' });
+      this.saveCourse.emit({
+        ...this.profileForm.value,
+        isDeleted: false,
+        img: 'assets/course.svg',
+      });
     }
   }
 
   private createForm(): void {
     this.profileForm = this.fb.group({
-      name: ['', [Validators.required, Validators.maxLength(this.maxLengthTitle)]],
-      description: ['', [Validators.required, Validators.maxLength(this.maxLengthTitle)]],
+      name: [
+        '',
+        [Validators.required, Validators.maxLength(this.maxLengthTitle)],
+      ],
+      description: [
+        '',
+        [Validators.required, Validators.maxLength(this.maxLengthTitle)],
+      ],
       createDate: ['', [Validators.required, dateValidator]],
-      duration: ['', [Validators.required, Validators.pattern(/^[0-9]+$/), rangeValidator(this.range)]],
-      authors: ['', Validators.required],
+      duration: [
+          '',
+          [
+          Validators.required,
+          Validators.pattern(/^[0-9]+$/),
+          rangeValidator(this.range),
+        ],
+        ],
+        authors: ['', Validators.required],
     });
   }
 }

@@ -1,21 +1,20 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {CourseEditFormComponent} from './course-edit-form.component';
-import {NO_ERRORS_SCHEMA} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
-import {Location} from '@angular/common';
+import { CourseEditFormComponent } from './course-edit-form.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Location } from '@angular/common';
 import { By } from '@angular/platform-browser';
 import { Course } from 'src/app/core/models';
 
 const mockCourses: Course = {
   name: 'Magna excepteur aute deserunt9',
-  description:
-    'Est minim ea sunt labor',
+  description: 'Est minim ea sunt labor',
   createDate: '11/14/19',
   duration: 123,
   authors: 'Authour2',
   isDeleted: false,
-  img: 'assets/course.svg'
+  img: 'assets/course.svg',
 };
 
 describe('AddCourseComponent', () => {
@@ -27,13 +26,15 @@ describe('AddCourseComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [CourseEditFormComponent],
-      providers: [FormBuilder, {
-        provide: Location,
-        useValue: loc,
-      }],
+      providers: [
+        FormBuilder,
+        {
+          provide: Location,
+          useValue: loc,
+        },
+      ],
       schemas: [NO_ERRORS_SCHEMA],
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -48,7 +49,9 @@ describe('AddCourseComponent', () => {
 
   describe('onCancel()', () => {
     it('should return back', () => {
-      const cancelButton = fixture.debugElement.query(By.css('.add-course__cancel'));
+      const cancelButton = fixture.debugElement.query(
+        By.css('.add-course__cancel')
+      );
       cancelButton.triggerEventHandler('click', null);
       expect(loc.back).toHaveBeenCalled();
     });
@@ -61,7 +64,9 @@ describe('AddCourseComponent', () => {
         expect(course).toEqual(mockCourses);
         done();
       });
-      const saveButton = fixture.debugElement.query(By.css('.add-course__save'));
+      const saveButton = fixture.debugElement.query(
+        By.css('.add-course__save')
+      );
       saveButton.triggerEventHandler('click', null);
     });
   });

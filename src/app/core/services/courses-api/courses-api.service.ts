@@ -7,25 +7,26 @@ import { httpOptions } from '../../environments/http-options';
 import { Api } from '../../environments/api';
 import { Params } from '@angular/router';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CoursesApiService {
-
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) {}
 
   public getCourses(searchParams?: SearchParams): Observable<Course[]> {
-    return this.http.get<Course[]>(Api.courses, this.createSearchParams(searchParams));
+    return this.http.get<Course[]>(
+      Api.courses,
+      this.createSearchParams(searchParams)
+    );
   }
 
   private createSearchParams(searchParams: SearchParams): Params {
     let result;
     if (searchParams) {
       let params = new HttpParams();
-      Object.keys(searchParams).forEach((key: string) => params = params.set(key, searchParams[key]));
+      Object.keys(searchParams).forEach(
+        (key: string) => (params = params.set(key, searchParams[key]))
+      );
       result = { params };
     }
 
@@ -45,6 +46,10 @@ export class CoursesApiService {
   }
 
   public updateCourse(course: Course): Observable<Course> {
-    return this.http.put<Course>(`${Api.courses}/${course.id}`, course, httpOptions);
+    return this.http.put<Course>(
+      `${Api.courses}/${course.id}`,
+      course,
+      httpOptions
+    );
   }
 }

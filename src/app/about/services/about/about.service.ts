@@ -4,11 +4,10 @@ import { Observable } from 'rxjs';
 import { About } from 'src/app/core/models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AboutService {
-
-  constructor(private aboutApiService: AboutApiService) { }
+  constructor(private aboutApiService: AboutApiService) {}
 
   public getAbout(): Observable<About> {
     return this.aboutApiService.getAbout();

@@ -12,33 +12,34 @@ import { BehaviorSubject } from 'rxjs';
 
 const mockCourses = [
   {
-    "name": "Magna excepteur aute deserunt16",
-    "description": "Est minim ea sunt laborum minim eu excepteer, Colpa sint exercitation mollit enim ad culpa allqulp laborum cillum. Dolor officia culpa labore ex eiusmod ut est ea voluptate ea nostrud.",
-    "createDate": "11/14/19",
-    "duration": 123,
-    "authors": "Authour2",
-    "id": 16
+    name: 'Magna excepteur aute deserunt16',
+    description:
+      'Est minim ea sunt laborum minim eu excepteer, Colpa sint exercitation mollit enim ad culpa allqulp laborum cillum. Dolor officia culpa labore ex eiusmod ut est ea voluptate ea nostrud.',
+    createDate: '11/14/19',
+    duration: 123,
+    authors: 'Authour2',
+    id: 16,
   },
   {
-    "name": "we",
-    "description": "wer",
-    "createDate": "11/11/21",
-    "duration": 2,
-    "authors": "dsa",
-    "id": 17
-  }
+    name: 'we',
+    description: 'wer',
+    createDate: '11/11/21',
+    duration: 2,
+    authors: 'dsa',
+    id: 17,
+  },
 ];
 const mockCoursesServiceMethods = {
-  'getCourses': undefined,
-  'getCoursesName': undefined,
-  'deleteCourse': undefined,
-  'updateCourse': undefined,
-  'courses': mockCourses,
-  'coursesName': mockCourses,
-  'searchParamsSubject': {
-    value: { _start: 0, _end: 3 }
+  getCourses: undefined,
+  getCoursesName: undefined,
+  deleteCourse: undefined,
+  updateCourse: undefined,
+  courses: mockCourses,
+  coursesName: mockCourses,
+  searchParamsSubject: {
+    value: { _start: 0, _end: 3 },
   },
-  'courseDeletedState': [1]
+  courseDeletedState: [1],
 };
 describe('CoursesComponent', () => {
   let component: CoursesComponent;
@@ -46,26 +47,24 @@ describe('CoursesComponent', () => {
   let coursesService: CoursesService;
   let router = { navigate: jasmine.createSpy('navigate') };
 
-  beforeEach((() => {
-    coursesService = jasmine.createSpyObj('CoursesService', mockCoursesServiceMethods);
+  beforeEach(() => {
+    coursesService = jasmine.createSpyObj(
+      'CoursesService',
+      mockCoursesServiceMethods
+    );
     TestBed.configureTestingModule({
       declarations: [CoursesComponent],
-      imports: [
-        NoopAnimationsModule,
-        SharedModule,
-        SearchModule,
-      ],
+      imports: [NoopAnimationsModule, SharedModule, SearchModule],
       providers: [
         {
           provide: CoursesService,
           useValue: coursesService,
         },
-        { provide: Router, useValue: router }
+        { provide: Router, useValue: router },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
-  }));
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CoursesComponent);
@@ -166,7 +165,10 @@ describe('CoursesComponent', () => {
 
   describe('tryToShowButtonMore()', () => {
     it('should get boolean', async () => {
-      component.searchParams = new BehaviorSubject({ _start: 0, _end: mockCourses.length });
+      component.searchParams = new BehaviorSubject({
+        _start: 0,
+        _end: mockCourses.length,
+      });
       const isShowButtonMore = component.tryToShowButtonMore(mockCourses);
       expect(typeof isShowButtonMore).toBe('boolean');
     });

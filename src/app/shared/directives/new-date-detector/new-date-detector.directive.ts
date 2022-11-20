@@ -1,10 +1,9 @@
 import { Directive, Input, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[appNewDateDetector]'
+  selector: '[appNewDateDetector]',
 })
 export class NewDateDetectorDirective {
-
   @Input('appNewDateDetector') private date: string;
 
   @HostBinding('class.new-item') public get classNewItem(): boolean {

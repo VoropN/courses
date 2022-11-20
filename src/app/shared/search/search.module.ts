@@ -8,8 +8,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-
-
 @NgModule({
   declarations: [SearchComponent],
   imports: [
@@ -22,6 +20,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatButtonModule,
   ],
-  exports: [SearchComponent]
+  exports: [SearchComponent],
 })
-export class SearchModule { }
+export class SearchModule {}

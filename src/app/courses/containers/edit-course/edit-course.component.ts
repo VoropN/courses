@@ -13,14 +13,16 @@ import { Course } from 'src/app/core/models';
 export class EditCourseComponent {
   public title = 'Update course! ';
   public id: number = Number(this.activedRouter.snapshot.params.id);
-  public course$: Observable<Course> = this.coursesService.getCourseById(this.id);
+  public course$: Observable<Course> = this.coursesService.getCourseById(
+    this.id
+  );
 
   constructor(
     private activedRouter: ActivatedRoute,
-    private coursesService: CoursesService,
-  ) { }
+    private coursesService: CoursesService
+  ) {}
 
   public updateCourse(course: Course): void {
-    this.coursesService.updateCourse({ ...course, id: this.id});
+    this.coursesService.updateCourse({ ...course, id: this.id });
   }
 }

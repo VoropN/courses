@@ -1,11 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  OnDestroy,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { SearchOptions } from '../../models';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { SearchParams } from 'src/app/core/models';
-
 
 @Component({
   selector: 'app-search',
@@ -19,7 +27,8 @@ export class SearchComponent<T> implements OnInit, OnDestroy {
   @Input() public options: SearchOptions;
   @Output() public search: EventEmitter<string> = new EventEmitter();
   @Output() public searchName: EventEmitter<string> = new EventEmitter();
-  @ViewChild(MatAutocompleteTrigger, { static: false }) public autocomplete: MatAutocompleteTrigger;
+  @ViewChild(MatAutocompleteTrigger, { static: false })
+  public autocomplete: MatAutocompleteTrigger;
 
   public searchControl: FormControl = new FormControl('');
   private searchSubject: Subject<string> = new Subject();
@@ -36,7 +45,7 @@ export class SearchComponent<T> implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  public trackByItems(index: number, item: (T | any)): number {
+  public trackByItems(index: number, item: T | any): number {
     return item.id;
   }
 
@@ -69,21 +78,17 @@ export class SearchComponent<T> implements OnInit, OnDestroy {
   }
 
   private setSearchNameParamsEmitting(): void {
-    this.searchControl.valueChanges.pipe(
-      takeUntil(this.destroy$),
-      debounceTime(500),
-      distinctUntilChanged()
-    ).subscribe((search: string) => this.searchName.emit(search));
+    this.searchControl.valueChanges
+      .pipe(takeUntil(this.destroy$), debounceTime(500), distinctUntilChanged())
+      .subscribe((search: string) => this.searchName.emit(search));
   }
 
   private setSearchParamsEmitting(): void {
-    this.searchSubject.pipe(
-      takeUntil(this.destroy$),
-      debounceTime(500),
-      distinctUntilChanged()
-    ).subscribe((search: string) => {
-      this.autocomplete.closePanel();
-      this.search.emit(search);
-    });
+    this.searchSubject
+      .pipe(takeUntil(this.destroy$), debounceTime(500), distinctUntilChanged())
+      .subscribe((search: string) => {
+        this.autocomplete.closePanel();
+        this.search.emit(search);
+      });
   }
 }

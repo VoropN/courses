@@ -12,13 +12,13 @@ import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { async } from 'rxjs/internal/scheduler/async';
 
 const mockCourse = {
-  name: "Magna excepteur aute deserunt8",
+  name: 'Magna excepteur aute deserunt8',
   description:
-  "Est minim ea sunt laborum minim eu excepteer, Colpa sint exercitation mollit enim ad culpa allqulp laborum cillum. Dolor officia culpa labore ex eiusmod ut est ea voluptate ea nostrud.",
-  createDate: "11/14/19",
+    'Est minim ea sunt laborum minim eu excepteer, Colpa sint exercitation mollit enim ad culpa allqulp laborum cillum. Dolor officia culpa labore ex eiusmod ut est ea voluptate ea nostrud.',
+  createDate: '11/14/19',
   duration: 123,
-  authors: "Authour2",
-  id: 8
+  authors: 'Authour2',
+  id: 8,
 };
 
 const error = throwError({ status: 404 });
@@ -35,19 +35,28 @@ describe('CoursesService', () => {
   let errorHandlerService: ErrorHandlerService;
   let messageService: MessageService;
   let coursesApiService: CoursesApiService;
-  let router = class { navigate = jasmine.createSpy("navigate"); };
+  const router = class {
+    navigate = jasmine.createSpy('navigate');
+  };
 
   beforeEach(() => {
-    messageService = jasmine.createSpyObj('MessageService', ['showNotification']);
-    coursesApiService = jasmine.createSpyObj('CoursesApiService', mockCoursesServiceMethods);
-    errorHandlerService = jasmine.createSpyObj('ErrorHandlerService', ['handleResponceError']);
+    messageService = jasmine.createSpyObj('MessageService', [
+      'showNotification',
+    ]);
+    coursesApiService = jasmine.createSpyObj(
+      'CoursesApiService',
+      mockCoursesServiceMethods
+    );
+    errorHandlerService = jasmine.createSpyObj('ErrorHandlerService', [
+      'handleResponceError',
+    ]);
 
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [
         {
           provide: ErrorHandlerService,
-          useValue: errorHandlerService
+          useValue: errorHandlerService,
         },
         {
           provide: MessageService,
@@ -59,9 +68,9 @@ describe('CoursesService', () => {
         },
         {
           provide: Router,
-          useClass: router
-        }
-      ]
+          useClass: router,
+        },
+      ],
     });
     service = TestBed.get(CoursesService);
   });
@@ -70,7 +79,7 @@ describe('CoursesService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('should handler error', async() => {
+  describe('should handler error', async () => {
     it('when call getCourses', () => {
       service.getCourses();
       expect(errorHandlerService.handleResponceError).toHaveBeenCalled();

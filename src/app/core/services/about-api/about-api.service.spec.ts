@@ -2,7 +2,10 @@ import { TestBed, async } from '@angular/core/testing';
 import { AboutApiService } from './about-api.service';
 import { ErrorHandlerService } from '../error-handler/error-handler.service';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of, throwError, defer } from 'rxjs';
 import { About } from '../../models';
@@ -20,25 +23,25 @@ describe('AboutApiService', () => {
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
-    errorHandlerService = jasmine.createSpyObj('ErrorHandlerService', ['handleResponceError']);
+    errorHandlerService = jasmine.createSpyObj('ErrorHandlerService', [
+      'handleResponceError',
+    ]);
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
         {
           provide: ErrorHandlerService,
-          useValue: errorHandlerService
-        }
+          useValue: errorHandlerService,
+        },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     });
     service = TestBed.get(AboutApiService);
     httpClient = TestBed.get(HttpClient);
     httpMock = TestBed.get(HttpTestingController);
   });
 
-  beforeEach(() => {
-
-  });
+  beforeEach(() => {});
 
   it('should be created', () => {
     const service: AboutApiService = TestBed.get(AboutApiService);
@@ -48,7 +51,7 @@ describe('AboutApiService', () => {
   describe('getAbout()', () => {
     it('should call', () => {
       const mockAbout: About = {
-        text: "About page"
+        text: 'About page',
       };
       service.getAbout().subscribe((about: About) => {
         expect(about).toEqual(mockAbout);
@@ -56,7 +59,7 @@ describe('AboutApiService', () => {
 
       const mockReq = httpMock.expectOne(Api.about);
       expect(mockReq.cancelled).toBeFalsy();
-      expect(mockReq.request.responseType).toEqual("json");
+      expect(mockReq.request.responseType).toEqual('json');
       mockReq.flush(mockAbout);
 
       httpMock.verify();
@@ -66,7 +69,7 @@ describe('AboutApiService', () => {
       const errorResponse = new HttpErrorResponse({
         error: '404 error',
         status: 404,
-        statusText: 'Not Found'
+        statusText: 'Not Found',
       });
       spyOn(httpClient, 'get').and.returnValues(throwError(errorResponse));
       service.getAbout().subscribe();

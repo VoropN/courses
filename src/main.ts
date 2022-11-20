@@ -10,8 +10,9 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
 
 let id = 10000;
 createServer({
@@ -19,7 +20,7 @@ createServer({
     this.get('/about', (_, req) => {
       return db.about;
     });
-    
+
     this.get('/courses', (_, req) => {
       let courses = db.courses;
       const { _start = 0, _end = id, name_like } = req.queryParams;
@@ -50,7 +51,7 @@ createServer({
     });
     this.post('/courses', (_, req) => {
       const newCourse = JSON.parse(req.requestBody);
-      newCourse["id"] = ++id;
+      newCourse.id = ++id;
       db.courses.unshift(newCourse);
 
       return db.courses;

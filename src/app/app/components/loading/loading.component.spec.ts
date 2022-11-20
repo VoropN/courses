@@ -1,4 +1,9 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import {
+  async,
+  ComponentFixture,
+  TestBed,
+  inject,
+} from '@angular/core/testing';
 
 import { LoadingComponent } from './loading.component';
 import { LoadingService } from 'src/app/core/services/loading/loading.service';
@@ -14,9 +19,8 @@ describe('LoadingComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LoadingComponent],
       providers: [LoadingService],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
     fixture = TestBed.createComponent(LoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

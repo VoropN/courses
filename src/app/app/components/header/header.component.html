@@ -1,19 +1,33 @@
 <header class="header">
   <nav class="nav">
     <div class="logo">
-      <a class="logo__text nav-grid__item" mat-button [routerLink]="['/courses']">
+      <a
+        class="logo__text nav-grid__item"
+        mat-button
+        [routerLink]="['/courses']"
+      >
         <mat-icon class="logo__image">play_circle_outline</mat-icon>
         Video courses
       </a>
     </div>
     <ul class="nav-grid">
       <li class="nav-grid__col">
-        <a class="nav-grid__item" mat-button [routerLink]="['/courses']" routerLinkActive="nav-grid__item--active">
+        <a
+          class="nav-grid__item"
+          mat-button
+          [routerLink]="['/courses']"
+          routerLinkActive="nav-grid__item--active"
+        >
           Courses
         </a>
       </li>
       <li class="nav-grid__col">
-        <a class="nav-grid__item" mat-button [routerLink]="['/about']" routerLinkActive="nav-grid__item--active">
+        <a
+          class="nav-grid__item"
+          mat-button
+          [routerLink]="['/about']"
+          routerLinkActive="nav-grid__item--active"
+        >
           About
         </a>
       </li>

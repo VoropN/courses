@@ -9,13 +9,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of, BehaviorSubject } from 'rxjs';
 
 const mockCourse = {
-  name: "Magna excepteur aute deserunt8",
+  name: 'Magna excepteur aute deserunt8',
   description:
-    "Est minim ea sunt laborum minim eu excepteer, Colpa sint exercitation mollit enim ad culpa allqulp laborum cillum. Dolor officia culpa labore ex eiusmod ut est ea voluptate ea nostrud.",
-  createDate: "11/14/19",
+    'Est minim ea sunt laborum minim eu excepteer, Colpa sint exercitation mollit enim ad culpa allqulp laborum cillum. Dolor officia culpa labore ex eiusmod ut est ea voluptate ea nostrud.',
+  createDate: '11/14/19',
   duration: 123,
-  authors: "Authour2",
-  id: 8
+  authors: 'Authour2',
+  id: 8,
 };
 const mockCoursesServiceMethods = {
   getCourses: of([mockCourse]),
@@ -23,7 +23,7 @@ const mockCoursesServiceMethods = {
   postCourse: of(mockCourse),
   updateCourse: of(mockCourse),
   getCourseById: of(mockCourse),
-  searchParamsSubject: new BehaviorSubject({ _start: 0, _end: 5 })
+  searchParamsSubject: new BehaviorSubject({ _start: 0, _end: 5 }),
 };
 
 describe('CoursesService', () => {
@@ -32,8 +32,13 @@ describe('CoursesService', () => {
   let coursesApiService: CoursesApiService;
 
   beforeEach(() => {
-    messageService = jasmine.createSpyObj('MessageService', ['showNotification']);
-    coursesApiService = jasmine.createSpyObj('CoursesApiService', mockCoursesServiceMethods);
+    messageService = jasmine.createSpyObj('MessageService', [
+      'showNotification',
+    ]);
+    coursesApiService = jasmine.createSpyObj(
+      'CoursesApiService',
+      mockCoursesServiceMethods
+    );
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [
@@ -44,13 +49,15 @@ describe('CoursesService', () => {
         },
         {
           provide: CoursesApiService,
-          useValue: coursesApiService
+          useValue: coursesApiService,
         },
         {
           provide: Router,
-          useClass: class { navigate = jasmine.createSpy("navigate"); }
-        }
-      ]
+          useClass: class {
+            navigate = jasmine.createSpy('navigate');
+          },
+        },
+      ],
     });
     service = TestBed.get(CoursesService);
   });
@@ -70,7 +77,7 @@ describe('CoursesService', () => {
   });
 
   it('should call CoursesApiService\'s method "deleteCourse"', () => {
-    service.searchParamsSubject = new BehaviorSubject({ _start: 0, _end: 5 })
+    service.searchParamsSubject = new BehaviorSubject({ _start: 0, _end: 5 });
     service.deleteCourse(mockCourse);
     expect(coursesApiService.deleteCourse).toHaveBeenCalled();
   });

@@ -1,11 +1,11 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {EditCourseComponent} from './edit-course.component';
-import {ActivatedRoute} from '@angular/router';
-import {of} from 'rxjs';
-import {CoursesService} from '../../services/courses/courses.service';
-import {Course} from 'src/app/core/models';
-import {NO_ERRORS_SCHEMA} from '@angular/core';
+import { EditCourseComponent } from './edit-course.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
+import { CoursesService } from '../../services/courses/courses.service';
+import { Course } from 'src/app/core/models';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
@@ -32,9 +32,12 @@ describe('EditCourseComponent', () => {
   let activatedRoute: ActivatedRoute;
 
   beforeEach(async(() => {
-    coursesService = jasmine.createSpyObj('CoursesService', coursesServiceMethods);
+    coursesService = jasmine.createSpyObj(
+      'CoursesService',
+      coursesServiceMethods
+    );
     activatedRoute = jasmine.createSpyObj('ActivatedRoute', {
-      params: of({ id: mockCourse.id })
+      params: of({ id: mockCourse.id }),
     });
     TestBed.configureTestingModule({
       providers: [
@@ -42,7 +45,7 @@ describe('EditCourseComponent', () => {
           provide: ActivatedRoute,
           useValue: {
             snapshot: {
-              params: of({ id: mockCourse.id })
+              params: of({ id: mockCourse.id }),
             },
           },
         },

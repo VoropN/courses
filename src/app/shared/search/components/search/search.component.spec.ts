@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchComponent } from './search.component';
-import { MatAutocompleteModule, MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import {
+  MatAutocompleteModule,
+  MatAutocompleteTrigger,
+} from '@angular/material/autocomplete';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -12,23 +15,24 @@ import { Course } from 'src/app/core/models';
 import { By } from '@angular/platform-browser';
 import { debounceTime } from 'rxjs/operators';
 
-let searhcMethods = [
+const searhcMethods = [
   'clearValue',
   'onSearch',
   'ngOnInit',
   'ngOnDestroy',
-  'trackByItems'
+  'trackByItems',
 ];
 
-const mockCourses: Course[] = [{
-  name: "Magna excepteur aute deserunt9",
-  description:
-    "Est minim ea sunt",
-  createDate: "11/14/19",
-  duration: 123,
-  authors: "Authour2",
-  id: 9
-}];
+const mockCourses: Course[] = [
+  {
+    name: 'Magna excepteur aute deserunt9',
+    description: 'Est minim ea sunt',
+    createDate: '11/14/19',
+    duration: 123,
+    authors: 'Authour2',
+    id: 9,
+  },
+];
 
 describe('SearchComponent', () => {
   let component: SearchComponent<any>;
@@ -48,16 +52,15 @@ describe('SearchComponent', () => {
         MatIconModule,
         MatButtonModule,
       ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
     component.searchParams = {
-      name_like: 'name'
+      name_like: 'name',
     };
     fixture.detectChanges();
   });
@@ -81,7 +84,9 @@ describe('SearchComponent', () => {
         expect(search).toBe('');
         done();
       });
-      const saveButton = fixture.debugElement.query(By.css('.search-field__clear'));
+      const saveButton = fixture.debugElement.query(
+        By.css('.search-field__clear')
+      );
       saveButton.triggerEventHandler('click', null);
     });
   });
@@ -92,7 +97,9 @@ describe('SearchComponent', () => {
         expect(search).toBe(component.searchParams.name_like);
         done();
       });
-      const searchButton = fixture.debugElement.query(By.css('.search-field__input'));
+      const searchButton = fixture.debugElement.query(
+        By.css('.search-field__input')
+      );
       searchButton.triggerEventHandler('keydown.enter', null);
     });
 

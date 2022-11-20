@@ -11,9 +11,7 @@ import { Course } from 'src/app/core/models';
 export class AddCourseComponent {
   public title = 'New Course';
 
-  constructor(
-    private coursesService: CoursesService,
-  ) { }
+  constructor(private coursesService: CoursesService) {}
 
   public postCourse(course: Course): void {
     this.coursesService.postCourse(course);

@@ -7,18 +7,23 @@ import { retry, catchError } from 'rxjs/operators';
 import { Api } from '../../environments/api';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AboutApiService {
   constructor(
     private http: HttpClient,
-    private errorHandler: ErrorHandlerService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   public getAbout(): Observable<About> {
     return this.http.get<About>(Api.about).pipe(
       retry(2),
-      catchError((error) => (this.errorHandler.handleResponceError(error, 'Can\'t load about!'), EMPTY))
+      catchError(
+        (error) => (
+          this.errorHandler.handleResponceError(error, 'Can\'t load about!'),
+          EMPTY
+        )
+      )
     );
   }
 }

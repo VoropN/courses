@@ -13,11 +13,13 @@ describe('AboutService', () => {
     aboutApiService = jasmine.createSpyObj('AboutApiService', ['getAbout']);
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      providers: [{
-        provide: AboutApiService,
-        useValue: aboutApiService,
-      }],
-      schemas: [NO_ERRORS_SCHEMA]
+      providers: [
+        {
+          provide: AboutApiService,
+          useValue: aboutApiService,
+        },
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     });
 
     service = TestBed.get(AboutService);
